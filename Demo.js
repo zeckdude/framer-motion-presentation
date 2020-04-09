@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import styled from '@emotion/styled'
 
@@ -11,6 +11,7 @@ const MotionBox = styled(motion.div)`
   align-items: center;
   color: #ffffff;
   font-weight: bold;
+  cursor: pointer;
 `
 
 // https://www.framer.com/api/motion/animation/#variants
@@ -28,16 +29,18 @@ const variants = {
 };
 
 const Demo = () => {
+  const [isAnimationActive, setIsAnimationActive] = useState(false);
+
   return (
     <MotionBox
       variants={variants}
       initial="start"
-      animate="finish"
+      animate={isAnimationActive ? 'finish' : 'start'}
       transition={{
         ease: 'easeInOut',
-        delay: 2,
-        duration: 1
+        duration: 0.7
       }}
+      onClick={() => setIsAnimationActive(prevValue => !prevValue)}
     >
       Woah
     </MotionBox>
