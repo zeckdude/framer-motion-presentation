@@ -2,6 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import styled from '@emotion/styled'
 
+// https://www.framer.com/api/motion/animation/#target-object
+
 const Demo = () => {
   return (
     <motion.div
