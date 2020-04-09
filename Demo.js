@@ -7,7 +7,7 @@ const MotionBox = styled(motion.div)`
   width: 100px;
   height: 100px;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   color: #ffffff;
   font-weight: bold;
@@ -48,12 +48,25 @@ const Demo = () => {
         delay: 2,
         duration: 1,
         delayChildren: 3,
+        staggerChildren: 1,
       }}
     >
       <MotionBox
         style={{
-          width: '50%',
-          height: '50%',
+          width: '30%',
+          height: '30%',
+          backgroundColor: '#ffff31'
+        }}
+        variants={nestedVariants} 
+        transition={{
+          ease: 'easeInOut',
+          duration: 2
+        }}
+      />
+      <MotionBox
+        style={{
+          width: '30%',
+          height: '30%',
           backgroundColor: '#ffff31'
         }}
         variants={nestedVariants} 
