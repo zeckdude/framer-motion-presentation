@@ -30,6 +30,7 @@ const variants = {
 const Demo = () => {
   return (
     <MotionBox
+      variants={variants}
       initial="start"
       animate="finish"
       transition={{
