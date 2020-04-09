@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import styled from '@emotion/styled'
 
 const MotionBox = styled(motion.div)`
@@ -14,36 +14,66 @@ const MotionBox = styled(motion.div)`
   cursor: pointer;
 `
 
-// https://www.framer.com/api/motion/animation/#variants
+// https://www.framer.com/api/motion/animate-presence/
 
 const variants = {
   start: {
     x: 0,
     rotate: 0,
+    opacity: 0,
   },
-  finish: {
+  mount: {
     backgroundColor: '#ffc0cb',
     x: 400,
     rotate: 360,
+    opacity: 1,
+  },
+  unmount: {
+    backgroundColor: '#4682b4',
+    x: 0,
+    rotate: 0,
+    opacity: 0,
   }
 };
 
+const initialMessages = [
+  {
+    id: 1,
+    text: 'Hey Now',
+  },
+  {
+    id: 2,
+    text: 'Yeah Boi',
+  }
+];
+
 const Demo = () => {
-  const [isAnimationActive, setIsAnimationActive] = useState(false);
+  const [messages, setMessages] = useState(initialMessages);
+
+
 
   return (
-    <MotionBox
-      variants={variants}
-      initial="start"
-      animate={isAnimationActive ? 'finish' : 'start'}
-      transition={{
-        ease: 'easeInOut',
-        duration: 0.7
-      }}
-      onClick={() => setIsAnimationActive(prevValue => !prevValue)}
-    >
-      Woah
-    </MotionBox>
+    <div>
+      <button onClick={() => setMessages([...messages, { id: Math.round(Math.random() * 10), text: 'Another One' }])}>Add New Message</button>
+      <button onClick={() => setMessages(messages.slice(0, -1))}>Remove Last Message</button>
+      <AnimatePresence initial={false}>
+        {messages.map(({ id, text }) => (
+          <MotionBox
+            key={id}
+            variants={variants}
+            initial="start"
+            animate="mount"
+            exit="unmount"
+            transition={{
+              ease: 'easeInOut',
+              duration: 0.7
+            }}
+          >
+            {text}
+          </MotionBox>
+        ))}
+      </AnimatePresence>
+    </div>
   );
 }
 
