@@ -13,7 +13,7 @@ const MotionBox = styled(motion.div)`
   font-weight: bold;
 `
 
-// https://www.framer.com/api/motion/animation/#propagation
+// https://www.framer.com/api/motion/animation/#orchestration
 
 const variants = {
   start: {
