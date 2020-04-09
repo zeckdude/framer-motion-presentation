@@ -36,30 +36,16 @@ const variants = {
   }
 };
 
-const initialMessages = [
-  {
-    id: 1,
-    text: 'Hey Now',
-  },
-  {
-    id: 2,
-    text: 'Yeah Boi',
-  }
-];
 
 const Demo = () => {
-  const [messages, setMessages] = useState(initialMessages);
-
-
+  const [isVisible, setIsVisible] = useState(false);
 
   return (
     <div>
-      <button onClick={() => setMessages([...messages, { id: Math.round(Math.random() * 10), text: 'Another One' }])}>Add New Message</button>
-      <button onClick={() => setMessages(messages.slice(0, -1))}>Remove Last Message</button>
+      <button onClick={() => setIsVisible(prevValue => !prevValue)}>Toggle</button>
       <AnimatePresence initial={false}>
-        {messages.map(({ id, text }) => (
+        {isVisible && (
           <MotionBox
-            key={id}
             variants={variants}
             initial="start"
             animate="mount"
@@ -69,9 +55,9 @@ const Demo = () => {
               duration: 0.7
             }}
           >
-            {text}
+            Damn it Chris
           </MotionBox>
-        ))}
+        )}
       </AnimatePresence>
     </div>
   );
