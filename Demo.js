@@ -13,7 +13,7 @@ const MotionBox = styled(motion.div)`
   font-weight: bold;
 `
 
-// https://www.framer.com/api/motion/animation/#variants
+// https://www.framer.com/api/motion/animation/#propagation
 
 const variants = {
   start: {
@@ -24,6 +24,16 @@ const variants = {
     backgroundColor: '#ffc0cb',
     x: 400,
     rotate: 360,
+  }
+};
+
+const nestedVariants = {
+  start: {
+    rotate: 0,
+  },
+  finish: {
+    backgroundColor: '#ffc0cb',
+    rotate: -720,
   }
 };
 
