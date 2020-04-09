@@ -16,7 +16,6 @@ const Demo = () => {
         fontWeight: 'bold'
       }}
       initial={{
-        backgroundColor: '#4682b4',
         x: 0,
         rotate: 0,
       }}
