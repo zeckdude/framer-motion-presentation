@@ -32,14 +32,15 @@ const nestedVariants = {
     rotate: 0,
   },
   finish: {
-    backgroundColor: '#ffc0cb',
-    rotate: -720,
+    backgroundColor: '#4e95e2',
+    rotate: -1440,
   }
 };
 
 const Demo = () => {
   return (
     <MotionBox
+      variants={variants} 
       initial="start"
       animate="finish"
       transition={{
@@ -48,7 +49,18 @@ const Demo = () => {
         duration: 1
       }}
     >
-      Woah
+      <MotionBox
+        style={{
+          width: '50%',
+          height: '50%',
+          backgroundColor: '#ffff31'
+        }}
+        variants={nestedVariants} 
+        transition={{
+          ease: 'easeInOut',
+          duration: 2
+        }}
+      />
     </MotionBox>
   );
 }
