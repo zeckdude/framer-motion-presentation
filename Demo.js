@@ -46,7 +46,8 @@ const Demo = () => {
       transition={{
         ease: 'easeInOut',
         delay: 2,
-        duration: 1
+        duration: 1,
+        delayChildren: 3,
       }}
     >
       <MotionBox
